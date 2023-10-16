@@ -1,0 +1,168 @@
+{
+    "1st Tier": [
+        {
+            "No Dex": "#0204",
+            "Boss Name": "Pineco",
+            "Boss CP": "3,526",
+            "Max Capture CP": "633",
+            "Max Capture CP Bosst": "791",
+            "Shiny": "Yes"
+        },
+        {
+            "No Dex": "#0263",
+            "Boss Name": "Galarian Zigzagoon",
+            "Boss CP": "1,742",
+            "Max Capture CP": "290",
+            "Max Capture CP Bosst": "363",
+            "Shiny": "Yes"
+        },
+        {
+            "No Dex": "#0524",
+            "Boss Name": "Roggenrola",
+            "Boss CP": "3,724",
+            "Max Capture CP": "688",
+            "Max Capture CP Bosst": "860",
+            "Shiny": "Yes"
+        },
+        {
+            "No Dex": "#0744",
+            "Boss Name": "Rockruff",
+            "Boss CP": "3,118",
+            "Max Capture CP": "543",
+            "Max Capture CP Bosst": "679",
+            "Shiny": "Yes"
+        },
+        {
+            "No Dex": "#0761",
+            "Boss Name": "Bounsweet",
+            "Boss CP": "1,571",
+            "Max Capture CP": "268",
+            "Max Capture CP Bosst": "336",
+            "Shiny": "No"
+        }
+    ],
+    "1st Tier Shadow Raids": [
+        {
+            "No Dex": "#0052",
+            "Boss Name": "Meowth",
+            "Boss CP": "2,527",
+            "Max Capture CP": "427",
+            "Max Capture CP Bosst": "534",
+            "Shiny": "Yes"
+        },
+        {
+            "No Dex": "#0066",
+            "Boss Name": "Machop",
+            "Boss CP": "3,666",
+            "Max Capture CP": "730",
+            "Max Capture CP Bosst": "913",
+            "Shiny": "Yes"
+        },
+        {
+            "No Dex": "#0194",
+            "Boss Name": "Wooper",
+            "Boss CP": "1,984",
+            "Max Capture CP": "366",
+            "Max Capture CP Bosst": "458",
+            "Shiny": "No"
+        },
+        {
+            "No Dex": "#0204",
+            "Boss Name": "Pineco",
+            "Boss CP": "3,526",
+            "Max Capture CP": "633",
+            "Max Capture CP Bosst": "791",
+            "Shiny": "Yes"
+        }
+    ],
+    "3rd Tier": [
+        {
+            "No Dex": "#0020",
+            "Boss Name": "Alolan Raticate",
+            "Boss CP": "11,700",
+            "Max Capture CP": "974",
+            "Max Capture CP Bosst": "1,217",
+            "Shiny": "No"
+        },
+        {
+            "No Dex": "#0036",
+            "Boss Name": "Clefable",
+            "Boss CP": "15,406",
+            "Max Capture CP": "1,392",
+            "Max Capture CP Bosst": "1,741",
+            "Shiny": "No"
+        },
+        {
+            "No Dex": "#0131",
+            "Boss Name": "Lapras",
+            "Boss CP": "14,847",
+            "Max Capture CP": "1,509",
+            "Max Capture CP Bosst": "1,886",
+            "Shiny": "Yes"
+        },
+        {
+            "No Dex": "#0621",
+            "Boss Name": "Druddigon",
+            "Boss CP": "18,606",
+            "Max Capture CP": "1,561",
+            "Max Capture CP Bosst": "1,951",
+            "Shiny": "Yes"
+        }
+    ],
+    "3rd Tier Shadow Raids": [
+        {
+            "No Dex": "#0125",
+            "Boss Name": "Electabuzz",
+            "Boss CP": "16,809",
+            "Max Capture CP": "1,333",
+            "Max Capture CP Bosst": "1,667",
+            "Shiny": "No"
+        },
+        {
+            "No Dex": "#0126",
+            "Boss Name": "Magmar",
+            "Boss CP": "17,238",
+            "Max Capture CP": "1,367",
+            "Max Capture CP Bosst": "1,710",
+            "Shiny": "No"
+        },
+        {
+            "No Dex": "#0207",
+            "Boss Name": "Gligar",
+            "Boss CP": "5,459",
+            "Max Capture CP": "1,061",
+            "Max Capture CP Bosst": "1,326",
+            "Shiny": "Yes"
+        }
+    ],
+    "5th Tier": [
+        {
+            "No Dex": "#0799",
+            "Boss Name": "Guzzlord",
+            "Boss CP": "26,545",
+            "Max Capture CP": "1,650",
+            "Max Capture CP Bosst": "2,062",
+            "Shiny": "Yes"
+        }
+    ],
+    "Legendary Shadow Raids": [
+        {
+            "No Dex": "#0146",
+            "Boss Name": "Moltres",
+            "Boss CP": "45,609",
+            "Max Capture CP": "1,980",
+            "Max Capture CP Bosst": "2,475",
+            "Shiny": "Yes"
+        }
+    ],
+    "Mega Raids": [
+        {
+            "No Dex": "#0094",
+            "Boss Name": "Mega Gengar",
+            "Boss CP": "50,516",
+            "Max Capture CP": "1,644",
+            "Max Capture CP Bosst": "2,055",
+            "Shiny": "Yes"
+        }
+    ]
+}
