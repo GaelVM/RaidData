@@ -28,6 +28,9 @@ jobs:
     - name: Run Python Script
       run: python bosses.py
 
+    - name: Move JSON File to Working Directory
+      run: mv temp/raid_data_by_level.json ./
+
     - name: Commit and Push JSON to Main
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -38,4 +41,4 @@ jobs:
         git push
 
     - name: Remove Temp Folder
-      run: rm -rf temp
+      run: rm -r temp
