@@ -42,5 +42,3 @@ jobs:
 
     - name: Remove Temp Folder
       run: rm -r temp
-
-      
