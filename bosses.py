@@ -1,6 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import os
+import tempfile
+import shutil
+
+# Crear una carpeta temporal
+temp_dir = tempfile.mkdtemp()
+
+# Definir la ruta del archivo JSON en la carpeta temporal
+json_file_path = os.path.join(temp_dir, "raid_data_by_level.json")
 
 # Definir la URL de la página web
 url = "https://pokemongo.fandom.com/wiki/List_of_current_Raid_Bosses"
@@ -60,6 +69,9 @@ if response.status_code == 200:
             # Agregar el diccionario de datos al nivel de incursión correspondiente
             raid_data_by_level[raid_level].append(raid_data)
 
-    # Guardar el diccionario raid_data_by_level en un archivo JSON
-    with open("raid_data_by_level.json", "w") as json_file:
-        json.dump(raid_data_by_level, json_file, indent=4)
+            # Guardar el diccionario raid_data_by_level en el archivo JSON en la carpeta temporal
+            with open(json_file_path, "w") as json_file:
+             json.dump(raid_data_by_level, json_file, indent=4)
+
+# Copiar el archivo JSON al directorio de trabajo del flujo de trabajo
+shutil.copy(json_file_path, "./raid_data_by_level.json")
