@@ -5,8 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '*/10 * * * *'
-  workflow_dispatch:
+    - cron: '*/10 * * * *'  # Ejecutar todos los días a la medianoche
 
 jobs:
   update-raid-data:
@@ -32,14 +31,20 @@ jobs:
     - name: Move JSON File to Working Directory
       run: mv temp/raid_data_by_level.json ./
 
-    - name: Commit and Push JSON to Main
+    - name: Commit JSON Changes
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
 
         git add raid_data_by_level.json
-        git commit -m "Update raid data" || true  # Esto generará una confirmación incluso si no hay cambios.
-        git push || true  # Esto empujará la confirmación, reemplazando el archivo JSON existente.
+        git commit -m "Update raid data"
 
     - name: Remove Temp Folder
       run: rm -r temp
+
+    - name: Push Data Branch
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: data
+        force: true
