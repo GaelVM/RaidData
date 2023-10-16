@@ -5,7 +5,8 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 0 * * *'  # Ejecutar todos los días a la medianoche
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
 
 jobs:
   update-raid-data:
