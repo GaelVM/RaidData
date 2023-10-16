@@ -75,15 +75,7 @@ if response.status_code == 200:
 
     # Guardar el diccionario raid_data_by_level en un archivo JSON en la carpeta temporal
     with open(json_file_path, "w") as json_file:
-        json.dump(raid_data_by_level, json_file, indent=4)
-
-    # Escribir una versión "minificada" del JSON en la carpeta temporal
-    json_min_file_path = os.path.join(temp_folder, "raid_data_by_level_min.json")
-    with open(json_min_file_path, "w") as json_min_file:
-        json.dump(raid_data_by_level, json_min_file)
-
-    # Eliminar la carpeta temporal después de haber utilizado los archivos
-    shutil.rmtree(temp_folder)
+     json.dump(raid_data_by_level, json_file, indent=4)
 
     print("Datos guardados en la carpeta temporal y operaciones adicionales realizadas.")
 else:
