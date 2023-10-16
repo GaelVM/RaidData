@@ -1,15 +1,19 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-import os
-import tempfile
 import shutil
+import os
 
-# Crear una carpeta temporal
-temp_dir = tempfile.mkdtemp()
+# Define la carpeta temporal
+temp_folder = "temp"
 
-# Definir la ruta del archivo JSON en la carpeta temporal
-json_file_path = os.path.join(temp_dir, "raid_data_by_level.json")
+# Verifica si la carpeta temporal ya existe, y si no, créala
+if not os.path.exists(temp_folder):
+    os.makedirs(temp_folder)
+
+# Define la ruta completa del archivo JSON en la carpeta temporal
+json_file_path = os.path.join(temp_folder, "raid_data_by_level.json")
+
 
 # Definir la URL de la página web
 url = "https://pokemongo.fandom.com/wiki/List_of_current_Raid_Bosses"
@@ -69,9 +73,18 @@ if response.status_code == 200:
             # Agregar el diccionario de datos al nivel de incursión correspondiente
             raid_data_by_level[raid_level].append(raid_data)
 
-            # Guardar el diccionario raid_data_by_level en el archivo JSON en la carpeta temporal
-            with open(json_file_path, "w") as json_file:
-             json.dump(raid_data_by_level, json_file, indent=4)
+    # Guardar el diccionario raid_data_by_level en un archivo JSON en la carpeta temporal
+    with open(json_file_path, "w") as json_file:
+        json.dump(raid_data_by_level, json_file, indent=4)
 
-# Copiar el archivo JSON al directorio de trabajo del flujo de trabajo
-shutil.copy(json_file_path, "./raid_data_by_level.json")
+    # Escribir una versión "minificada" del JSON en la carpeta temporal
+    json_min_file_path = os.path.join(temp_folder, "raid_data_by_level_min.json")
+    with open(json_min_file_path, "w") as json_min_file:
+        json.dump(raid_data_by_level, json_min_file)
+
+    # Eliminar la carpeta temporal después de haber utilizado los archivos
+    shutil.rmtree(temp_folder)
+
+    print("Datos guardados en la carpeta temporal y operaciones adicionales realizadas.")
+else:
+    print("Error al obtener la página web.")
