@@ -1,6 +1,9 @@
 name: Update Raid Data
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: '0 0 * * *'  # Ejecutar todos los días a la medianoche
 
