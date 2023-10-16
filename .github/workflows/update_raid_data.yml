@@ -5,37 +5,49 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 0 * * *'  # Ejecutar todos los días a la medianoche
+    - cron: '*/10 * * * *'  # Ejecutar todos los días a la medianoche
 
 jobs:
-  update-raid-data:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-
-    - name: Install Dependencies
-      run: |
-        pip install requests
-        pip install beautifulsoup4
-
-    - name: Run Python Script
-      run: python bosses.py
-
-    - name: Move JSON File to Working Directory
-      run: mv temp/raid_data_by_level.json ./
-
-    - name: Commit and Push JSON to Data Branch
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        
-        git add raid_data_by_level.json
-        git commit -m "Update raid data"
-        git push origin HEAD:refs/heads/data
+      update-raid-data:
+        runs-on: ubuntu-latest
+    
+        steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v2
+    
+        - name: Set up Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: 3.8
+    
+        - name: Install Dependencies
+          run: |
+            pip install requests
+            pip install beautifulsoup4
+    
+        - name: Run Python Script
+          run: python bosses.py
+    
+        - name: Move JSON File to Working Directory
+          run: mv temp/raid_data_by_level.json ./
+    
+        - name: Modify JSON File
+          run: echo "// This is a comment to trigger a change" >> raid_data_by_level.json
+    
+        - name: Commit JSON Changes
+          run: |
+            git config --local user.email "github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+            git switch --orphan data
+            git add raid_data_by_level.json
+            git commit -m "Update raid data"
+    
+        - name: Remove Temp Folder
+          run: rm -r temp
+    
+        - name: Push Data Branch
+          uses: ad-m/github-push-action@v0.6.0
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: data
+            force: true
