@@ -1,9 +1,6 @@
 name: Update Raid Data
 
 on:
-  push:
-    branches:
-      - main
   schedule:
     - cron: '0 0 * * *'  # Ejecutar todos los días a la medianoche
 
@@ -26,7 +23,7 @@ jobs:
         pip install beautifulsoup4
 
     - name: Run Python Script
-      run: python bosses.py  
+      run: python bosses.py
 
     - name: Commit and Push JSON to Main
       run: |
@@ -35,3 +32,4 @@ jobs:
         git add raid_data_by_level.json
         git commit -m "Update raid data"
         git push
+
