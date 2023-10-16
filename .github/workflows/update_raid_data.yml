@@ -36,10 +36,9 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         
-        # Agregar y confirmar solo si hay cambios en el archivo JSON
         git add raid_data_by_level.json
-        git diff-index --quiet HEAD || git commit -m "Update raid data"
-        git push
+        git commit -m "Update raid data" || true  # Evita errores si no hay cambios
+        git push || true  # Evita errores si no hay cambios
 
     - name: Remove Temp Folder
       run: rm -r temp
