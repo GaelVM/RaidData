@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '*/10 * * * *'  # Ejecutar todos los días a la medianoche
+    - cron: '*/10 * * * *'  # Ejecutar cada 10 minutos
 
 jobs:
       update-raid-data:
