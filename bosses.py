@@ -12,7 +12,7 @@ if not os.path.exists(temp_folder):
     os.makedirs(temp_folder)
 
 # Define la ruta completa del archivo JSON en la carpeta temporal
-json_file_path = os.path.join(temp_folder, "raid_data_by_level.json")
+json_file_path = os.path.join(temp_folder, "bossraid.json")
 
 
 # Definir la URL de la página web
