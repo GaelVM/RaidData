@@ -40,7 +40,7 @@ jobs:
             git config --local user.name "github-actions[bot]"
             git switch --orphan data
             git add bossraid.json
-            git commit -m "Update raid data"
+            git commit -m "Actualizado datos de Jefes de Raid"
     
         - name: Remove Temp Folder
           run: rm -r temp
