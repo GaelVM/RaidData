@@ -29,7 +29,7 @@ jobs:
           run: python bosses.py
     
         - name: Move JSON File to Working Directory
-          run: mv temp/raid_data_by_level.json ./
+          run: mv temp/bossraid.json ./
     
         - name: Modify JSON File
           run: echo "// This is a comment to trigger a change" >> raid_data_by_level.json
