@@ -57,7 +57,12 @@ if response.status_code == 200:
             shiny_info = element.find("div", class_="pogo-list-item-image")
             shiny = "Yes" if "shiny" in shiny_info.get("class") else "No"
             print("Shiny:", shiny)
-            print("\n")
+
+            # Buscar los elementos <a> dentro de la clase "pogo-list-item-types"
+            type_elements = raid_info.find("div", class_="pogo-list-item-types").find_all("a")
+
+            # Crear una lista para almacenar los valores del atributo "title"
+            type_titles = [element.get("title") for element in type_elements]
 
             # Agregar todos los campos al diccionario raid_data
             raid_data = {
@@ -66,26 +71,18 @@ if response.status_code == 200:
                 "Boss CP": boss_cp,
                 "Max Capture CP": max_capture_cp,
                 "Max Capture CP Bosst": max_capture_cp_bosst,
-                "Shiny": shiny
+                "Shiny": shiny,
+                "Types": type_titles  # Agregar el campo "Types" al diccionario
             }
             
             # Agregar el diccionario de datos al nivel de incursión correspondiente
             raid_data_by_level[raid_level].append(raid_data)
 
+            print("\n")
+
     # Guardar el diccionario raid_data_by_level en un archivo JSON en la carpeta temporal
     with open(json_file_path, "w") as json_file:
         json.dump(raid_data_by_level, json_file, indent=4)
-
-    # Buscar los elementos <a> dentro de la clase "pogo-list-item-types"
-    type_elements = soup.find("div", class_="pogo-list-item-types").find_all("a")
-
-    # Crear una lista para almacenar los valores del atributo "title"
-    type_titles = [element.get("title") for element in type_elements]
-
-    # Imprimir los valores del atributo "title"
-    print("Types:")
-    for title in type_titles:
-        print(title)
 
     print("Datos guardados en la carpeta temporal y operaciones adicionales realizadas.")
 else:
