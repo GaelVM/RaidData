@@ -14,7 +14,6 @@ if not os.path.exists(temp_folder):
 # Define la ruta completa del archivo JSON en la carpeta temporal
 json_file_path = os.path.join(temp_folder, "bossraid.json")
 
-
 # Definir la URL de la página web
 url = "https://pokemongo.fandom.com/wiki/List_of_current_Raid_Bosses"
 
@@ -75,7 +74,18 @@ if response.status_code == 200:
 
     # Guardar el diccionario raid_data_by_level en un archivo JSON en la carpeta temporal
     with open(json_file_path, "w") as json_file:
-     json.dump(raid_data_by_level, json_file, indent=4)
+        json.dump(raid_data_by_level, json_file, indent=4)
+
+    # Buscar los elementos <a> dentro de la clase "pogo-list-item-types"
+    type_elements = soup.find("div", class_="pogo-list-item-types").find_all("a")
+
+    # Crear una lista para almacenar los valores del atributo "title"
+    type_titles = [element.get("title") for element in type_elements]
+
+    # Imprimir los valores del atributo "title"
+    print("Types:")
+    for title in type_titles:
+        print(title)
 
     print("Datos guardados en la carpeta temporal y operaciones adicionales realizadas.")
 else:
