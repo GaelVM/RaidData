@@ -32,7 +32,7 @@ jobs:
           run: mv temp/bossraid.json ./
     
         - name: Modify JSON File
-          run: echo "// ByJuniorVM" >> bossraid.json
+          run: echo  >> bossraid.json
     
         - name: Commit JSON Changes
           run: |
