@@ -30,16 +30,23 @@ jobs:
         
         - name: Run Python Script
           run: python eggs.py
+        
+        - name: Run Python Script
+          run: python noticias.py
     
         - name: Move JSON File to Working Directory
           run: mv temp/bossraid.json ./
 
         - name: Move JSON File to Working Directory
           run: mv temp/eggs.json ./
+        
+        - name: Move JSON File to Working Directory
+          run: mv temp/noticias.json ./
     
         - name: Modify JSON File
           run: echo  >> bossraid.json
                echo  >> eggs.json
+               echo  >> noticias.json
     
         - name: Commit JSON Changes
           run: |
@@ -48,12 +55,13 @@ jobs:
             git switch --orphan data
             git add bossraid.json
             git add eggs.json
+            git add noticias.json
             git commit -m "Datos actualizados"
     
         - name: Remove Temp Folder
           run: rm -r temp
     
-        - name: Push Data Branch
+        - name: Push Data Branch (JrVM)
           uses: ad-m/github-push-action@v0.6.0
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
