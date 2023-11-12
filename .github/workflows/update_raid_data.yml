@@ -27,9 +27,11 @@ jobs:
     
         - name: Run Python Script
           run: python bosses.py
+               python eggs.py
     
         - name: Move JSON File to Working Directory
           run: mv temp/bossraid.json ./
+               mv temp/eggs.json ./
     
         - name: Modify JSON File
           run: echo  >> bossraid.json
