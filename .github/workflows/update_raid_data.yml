@@ -33,6 +33,9 @@ jobs:
         
         - name: Run Python Script
           run: python noticias.py
+        
+        - name: Run Python Script
+          run: python shinyrates.py
     
         - name: Move JSON File to Working Directory
           run: mv temp/bossraid.json ./
@@ -42,11 +45,15 @@ jobs:
         
         - name: Move JSON File to Working Directory
           run: mv temp/noticias.json ./
+        
+        - name: Move JSON File to Working Directory
+          run: mv temp/shinyrates.json ./
     
         - name: Modify JSON File
           run: echo  >> bossraid.json
                echo  >> eggs.json
                echo  >> noticias.json
+               echo  >> shinyrates.json
     
         - name: Commit JSON Changes
           run: |
@@ -56,7 +63,8 @@ jobs:
             git add bossraid.json
             git add eggs.json
             git add noticias.json
-            git commit -m "Datos actualizados"
+            git add shinyrates.json
+            git commit -m "Datos actualizados 🤖🍺"
     
         - name: Remove Temp Folder
           run: rm -r temp
