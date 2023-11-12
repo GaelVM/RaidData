@@ -1,89 +1,81 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-import shutil
 import os
+import tempfile
 
-# Define la carpeta temporal
-temp_folder = "temp"
-
-# Verifica si la carpeta temporal ya existe, y si no, créala
-if not os.path.exists(temp_folder):
-    os.makedirs(temp_folder)
-
-# Define la ruta completa del archivo JSON en la carpeta temporal
-json_file_path = os.path.join(temp_folder, "bossraid.json")
-
-# Definir la URL de la página web
-url = "https://pokemongo.fandom.com/wiki/List_of_current_Raid_Bosses"
-
-# Realizar la solicitud HTTP y obtener el contenido de la página
+url = "https://www.serebii.net/pokemongo/raidbattles.shtml"
 response = requests.get(url)
 
-# Verificar si la solicitud fue exitosa
 if response.status_code == 200:
-    # Parsear el contenido HTML con BeautifulSoup
-    soup = BeautifulSoup(response.text, 'html.parser')
+    soup = BeautifulSoup(response.text, "html.parser")
 
-    # Encontrar todos los elementos dentro del div principal
-    elements = soup.find("div", class_="pogo-list-container bg-raid").find_all("div")
+    # Busca todas las etiquetas <h3> con texto que contiene "List"
+    list_headings = soup.find_all("h3", string=lambda text: "List" in text)
 
-    # Inicializar variables para el título y los datos de la incursión
-    raid_level = None
-    boss_name = None
-    boss_cp = None
-    max_capture_cp = None
+    all_data = {}
 
-    # Crear un diccionario para almacenar los datos de incursión agrupados por "Raid Level"
-    raid_data_by_level = {}
+    for heading in list_headings:
+        # Encuentra la tabla con la clase "dextab" y alineada al centro
+        raid_boss_table = heading.find_next("table", class_="dextab", align="center")
 
-    for element in elements:
-        if element.has_attr("class") and "pogo-list-header" in element["class"]:
-            raid_level = element.get_text().strip()
-            print("Raid Level:", raid_level)
-            raid_data_by_level[raid_level] = []  # Inicializar una lista vacía para el nivel de incursión actual
-        elif element.has_attr("class") and "pogo-list-item" in element["class"]:
-            raid_info = element.find("div", class_="pogo-list-item-desc")
-            no_dex = element.find("div", class_="pogo-list-item-number").text.strip()
-            print("No Dex:", no_dex)
-            boss_name = raid_info.find("div", class_="pogo-list-item-name").text.strip()
-            print("Boss Name:", boss_name)
-            boss_cp = raid_info.find("div", class_="pogo-raid-item-desc").find("b", class_="label").next_sibling.strip()
-            print("Boss CP:", boss_cp)
-            max_capture_cp = raid_info.find("b", text="Max capture CP").find_next("br").next_sibling.strip()
-            print("Max Capture CP:", max_capture_cp)
-            max_capture_cp_bosst = raid_info.find("div", class_="pogo-raid-item-desc").find("span", class_="pogo-raid-item-wb").text.strip()
-            print("Max Capture CP (with Weather Boost):", max_capture_cp_bosst)
-            shiny_info = element.find("div", class_="pogo-list-item-image")
-            shiny = "Yes" if "shiny" in shiny_info.get("class") else "No"
-            print("Shiny:", shiny)
+        if raid_boss_table:
+            # Lista para almacenar los datos de las filas
+            raid_boss_data = []
 
-            # Buscar los elementos <a> dentro de la clase "pogo-list-item-types"
-            type_elements = raid_info.find("div", class_="pogo-list-item-types").find_all("a")
+            # Itera sobre las filas de la tabla, omitiendo la primera (cabecera)
+            for row in raid_boss_table.find_all("tr")[1:]:
+                # Extrae los datos de cada celda
+                columns = row.find_all(["td", "th"])
 
-            # Crear una lista para almacenar los valores del atributo "title"
-            type_titles = [element.get("title") for element in type_elements]
+                # Asegúrate de que hay suficientes elementos en la lista antes de acceder a ellos
+                if len(columns) >= 6:
+                    # Extrae la URL de la imagen desde la etiqueta <img> y agrega la parte base
+                    img_url = "https://www.serebii.net" + (columns[1].find("img")['src'] if columns[1].find("img") else "")
 
-            # Agregar todos los campos al diccionario raid_data
-            raid_data = {
-                "No Dex": no_dex,
-                "Boss Name": boss_name,
-                "Boss CP": boss_cp,
-                "Max Capture CP": max_capture_cp,
-                "Max Capture CP Bosst": max_capture_cp_bosst,
-                "Shiny": shiny,
-                "Types": type_titles  # Agregar el campo "Types" al diccionario
-            }
-            
-            # Agregar el diccionario de datos al nivel de incursión correspondiente
-            raid_data_by_level[raid_level].append(raid_data)
+                    # Extrae los nombres de los archivos de tipo
+                    type_imgs = columns[4].find_all("img")
+                    type_info = {f"Typo{i+1}": img['src'].split('/')[-1].split('.')[0] for i, img in enumerate(type_imgs)}
 
-            print("\n")
+                    # Extrae la información de CP y formatea como un diccionario
+                    cp_text = columns[6].get_text(strip=True)
+                    cp_info = {
+                        "Normal": cp_text.split(":")[1].split("Boosted")[0].strip(),
+                        "Boosted": cp_text.split(":")[2].strip()
+                    }
 
-    # Guardar el diccionario raid_data_by_level en un archivo JSON en la carpeta temporal
-    with open(json_file_path, "w") as json_file:
-        json.dump(raid_data_by_level, json_file, indent=4)
+                    # Verifica la presencia de la imagen "shiny.png"
+                    shiny_img = columns[3].find("img", src="/pokemongo/icons/shiny.png")
+                    shiny_status = "yes" if shiny_img else "no"
 
-    print("Datos guardados en la carpeta temporal y operaciones adicionales realizadas.")
+                    data = {
+                        "No.": columns[0].get_text(strip=True),
+                        "Pic": img_url,
+                        "Name": columns[3].get_text(strip=True),  # Mantenido el orden original
+                        "Type": type_info,
+                        "CP": columns[5].get_text(strip=True),
+                        "Max. CP At Capture": cp_info,
+                        "Shiny": shiny_status
+                    }
+
+                    # Agrega los datos de la fila a la lista
+                    raid_boss_data.append(data)
+
+            # Agrega los datos al diccionario principal con el título como clave
+            all_data[heading.get_text(strip=True)] = raid_boss_data
+
+    # Crea una carpeta temporal
+    temp_dir = tempfile.mkdtemp()
+
+    # Define el nombre del archivo JSON temporal
+    json_file_path = os.path.join(temp_dir, "raid_boss_list.json")
+
+    # Guarda los datos en el archivo JSON temporal
+    with open(json_file_path, "w", encoding="utf-8") as json_file:
+        json.dump(all_data, json_file, ensure_ascii=False, indent=2)
+
+    print(f"Datos guardados en {json_file_path}")
+
+    # Continúa con el flujo de GitHub...
 else:
-    print("Error al obtener la página web.")
+    print(f"Error al obtener la página. Código de estado: {response.status_code}")

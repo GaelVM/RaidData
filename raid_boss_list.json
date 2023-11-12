@@ -1,0 +1,307 @@
+{
+  "☆ List": [
+    {
+      "No.": "#0037",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/037-a.png",
+      "Name": "Vulpix",
+      "Type": {
+        "Typo1": "ice"
+      },
+      "CP": "3027",
+      "Max. CP At Capture": {
+        "Normal": "504",
+        "Boosted": "631"
+      },
+      "Shiny": "yes"
+    },
+    {
+      "No.": "#0185",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/185.png",
+      "Name": "Sudowoodo",
+      "Type": {
+        "Typo1": "rock"
+      },
+      "CP": "6161",
+      "Max. CP At Capture": {
+        "Normal": "1227",
+        "Boosted": "1534"
+      },
+      "Shiny": "yes"
+    },
+    {
+      "No.": "#0403",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/403.png",
+      "Name": "Shinx",
+      "Type": {
+        "Typo1": "electric"
+      },
+      "CP": "2873",
+      "Max. CP At Capture": {
+        "Normal": "500",
+        "Boosted": "625"
+      },
+      "Shiny": "yes"
+    },
+    {
+      "No.": "#0777",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/777.png",
+      "Name": "Togedemaru",
+      "Type": {
+        "Typo1": "electric",
+        "Typo2": "steel"
+      },
+      "CP": "6351",
+      "Max. CP At Capture": {
+        "Normal": "1234",
+        "Boosted": "1543"
+      },
+      "Shiny": "no"
+    },
+    {
+      "No.": "#0928",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/928.png",
+      "Name": "Smoliv",
+      "Type": {
+        "Typo1": "grass",
+        "Typo2": "normal"
+      },
+      "CP": "2872",
+      "Max. CP At Capture": {
+        "Normal": "488",
+        "Boosted": "610"
+      },
+      "Shiny": "no"
+    }
+  ],
+  "Shadow ☆ List": [
+    {
+      "No.": "#0052",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/052.png",
+      "Name": "Meowth",
+      "Type": {
+        "Typo1": "normal"
+      },
+      "CP": "2527",
+      "Max. CP At Capture": {
+        "Normal": "427",
+        "Boosted": "534"
+      },
+      "Shiny": "yes"
+    },
+    {
+      "No.": "#0066",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/066.png",
+      "Name": "Machop",
+      "Type": {
+        "Typo1": "fighting"
+      },
+      "CP": "3666",
+      "Max. CP At Capture": {
+        "Normal": "730",
+        "Boosted": "913"
+      },
+      "Shiny": "yes"
+    },
+    {
+      "No.": "#0194",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/194.png",
+      "Name": "Wooper",
+      "Type": {
+        "Typo1": "water",
+        "Typo2": "ground"
+      },
+      "CP": "1984",
+      "Max. CP At Capture": {
+        "Normal": "366",
+        "Boosted": "458"
+      },
+      "Shiny": "no"
+    },
+    {
+      "No.": "#0204",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/204.png",
+      "Name": "Pineco",
+      "Type": {
+        "Typo1": "bug"
+      },
+      "CP": "3526",
+      "Max. CP At Capture": {
+        "Normal": "633",
+        "Boosted": "791"
+      },
+      "Shiny": "yes"
+    }
+  ],
+  "☆☆☆ List": [
+    {
+      "No.": "#0071",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/071.png",
+      "Name": "Victreebel",
+      "Type": {
+        "Typo1": "grass",
+        "Typo2": "poison"
+      },
+      "CP": "16313",
+      "Max. CP At Capture": {
+        "Normal": "1389",
+        "Boosted": "1736"
+      },
+      "Shiny": "no"
+    },
+    {
+      "No.": "#0178",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/178.png",
+      "Name": "Xatu",
+      "Type": {
+        "Typo1": "psychic",
+        "Typo2": "flying"
+      },
+      "CP": "15759",
+      "Max. CP At Capture": {
+        "Normal": "1250",
+        "Boosted": "1563"
+      },
+      "Shiny": "no"
+    },
+    {
+      "No.": "#0202",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/202.png",
+      "Name": "Wobbuffet",
+      "Type": {
+        "Typo1": "psychic"
+      },
+      "CP": "4950",
+      "Max. CP At Capture": {
+        "Normal": "586",
+        "Boosted": "733"
+      },
+      "Shiny": "yes"
+    },
+    {
+      "No.": "#0776",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/776.png",
+      "Name": "Turtonator",
+      "Type": {
+        "Typo1": "fire",
+        "Typo2": "dragon"
+      },
+      "CP": "16379",
+      "Max. CP At Capture": {
+        "Normal": "1270",
+        "Boosted": "1587"
+      },
+      "Shiny": "yes"
+    }
+  ],
+  "Shadow ☆☆☆ List": [
+    {
+      "No.": "#0125",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/125.png",
+      "Name": "Electabuzz",
+      "Type": {
+        "Typo1": "electric"
+      },
+      "CP": "16809",
+      "Max. CP At Capture": {
+        "Normal": "1333",
+        "Boosted": "1667"
+      },
+      "Shiny": "no"
+    },
+    {
+      "No.": "#0126",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/126.png",
+      "Name": "Magmar",
+      "Type": {
+        "Typo1": "fire"
+      },
+      "CP": "17238",
+      "Max. CP At Capture": {
+        "Normal": "1367",
+        "Boosted": "1710"
+      },
+      "Shiny": "no"
+    },
+    {
+      "No.": "#0207",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/207.png",
+      "Name": "Gligar",
+      "Type": {
+        "Typo1": "ground",
+        "Typo2": "flying"
+      },
+      "CP": "13373",
+      "Max. CP At Capture": {
+        "Normal": "1061",
+        "Boosted": "1326"
+      },
+      "Shiny": "no"
+    }
+  ],
+  "Mega Raid List": [
+    {
+      "No.": "#0229",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/229-m.png",
+      "Name": "Mega Houndoom",
+      "Type": {
+        "Typo1": "dark",
+        "Typo2": "fire"
+      },
+      "CP": "43937",
+      "Max. CP At Capture": {
+        "Normal": "1505",
+        "Boosted": "1882"
+      },
+      "Shiny": "yes"
+    },
+    {
+      "No.": "#0445",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/445-m.png",
+      "Name": "Mega Garchomp",
+      "Type": {
+        "Typo1": "dragon",
+        "Typo2": "ground"
+      },
+      "CP": "54483",
+      "Max. CP At Capture": {
+        "Normal": "2264",
+        "Boosted": "2830"
+      },
+      "Shiny": "yes"
+    }
+  ],
+  "☆☆☆☆☆ List": [
+    {
+      "No.": "#0640",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/640.png",
+      "Name": "Virizion",
+      "Type": {
+        "Typo1": "grass",
+        "Typo2": "fighting"
+      },
+      "CP": "39601",
+      "Max. CP At Capture": {
+        "Normal": "1727",
+        "Boosted": "2159"
+      },
+      "Shiny": "yes"
+    }
+  ],
+  "Shadow ☆☆☆☆☆ List": [
+    {
+      "No.": "#0144",
+      "Pic": "https://www.serebii.net/pokemongo/pokemon/144.png",
+      "Name": "Articuno",
+      "Type": {
+        "Typo1": "ice",
+        "Typo2": "flying"
+      },
+      "CP": "40165",
+      "Max. CP At Capture": {
+        "Normal": "1743",
+        "Boosted": "2179"
+      },
+      "Shiny": "yes"
+    }
+  ]
+}
