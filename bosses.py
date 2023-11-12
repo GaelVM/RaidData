@@ -1,8 +1,14 @@
+import os
 import requests
 from bs4 import BeautifulSoup
 import json
-import os
-import tempfile
+
+# Define la carpeta temporal
+temp_folder = "temp"
+
+# Verifica si la carpeta temporal ya existe, y si no, créala
+if not os.path.exists(temp_folder):
+    os.makedirs(temp_folder)
 
 url = "https://www.serebii.net/pokemongo/raidbattles.shtml"
 response = requests.get(url)
@@ -27,7 +33,7 @@ if response.status_code == 200:
             for row in raid_boss_table.find_all("tr")[1:]:
                 # Extrae los datos de cada celda
                 columns = row.find_all(["td", "th"])
-
+                
                 # Asegúrate de que hay suficientes elementos en la lista antes de acceder a ellos
                 if len(columns) >= 6:
                     # Extrae la URL de la imagen desde la etiqueta <img> y agrega la parte base
@@ -64,18 +70,14 @@ if response.status_code == 200:
             # Agrega los datos al diccionario principal con el título como clave
             all_data[heading.get_text(strip=True)] = raid_boss_data
 
-    # Crea una carpeta temporal
-    temp_dir = tempfile.mkdtemp()
+    # Define la ruta completa del archivo JSON en la carpeta temporal
+    json_file_path = os.path.join(temp_folder, "bossraid.json")
 
-    # Define el nombre del archivo JSON temporal
-    json_file_path = os.path.join(temp_dir, "raid_boss_list.json")
-
-    # Guarda los datos en el archivo JSON temporal
+    # Guardar el diccionario en un archivo JSON en la carpeta temporal
     with open(json_file_path, "w", encoding="utf-8") as json_file:
         json.dump(all_data, json_file, ensure_ascii=False, indent=2)
 
     print(f"Datos guardados en {json_file_path}")
 
-    # Continúa con el flujo de GitHub...
 else:
     print(f"Error al obtener la página. Código de estado: {response.status_code}")
