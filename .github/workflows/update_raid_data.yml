@@ -33,6 +33,7 @@ jobs:
     
         - name: Modify JSON File
           run: echo  >> bossraid.json
+               echo  >> eggs.json
     
         - name: Commit JSON Changes
           run: |
@@ -40,7 +41,8 @@ jobs:
             git config --local user.name "github-actions[bot]"
             git switch --orphan data
             git add bossraid.json
-            git commit -m "Actualizado datos de Jefes de Raid"
+            git add eggs.json
+            git commit -m "Datos actualizados"
     
         - name: Remove Temp Folder
           run: rm -r temp
