@@ -3,6 +3,13 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
+# Define la carpeta temporal
+temp_folder = "temp"
+
+# Verifica si la carpeta temporal ya existe, y si no, créala
+if not os.path.exists(temp_folder):
+    os.makedirs(temp_folder)
+
 url = "https://www.serebii.net/pokemongo/eggs.shtml"
 response = requests.get(url)
 
@@ -36,12 +43,6 @@ if response.status_code == 200:
         else:
             print("Advertencia: Fila incompleta, se omite.")
 
-    # Define la carpeta temporal
-    temp_folder = "temp"
-
-    # Verifica si la carpeta temporal ya existe, y si no, créala
-    if not os.path.exists(temp_folder):
-        os.makedirs(temp_folder)
 
     # Define la ruta completa del archivo JSON en la carpeta temporal
     json_file_path = os.path.join(temp_folder, "eggs.json")
