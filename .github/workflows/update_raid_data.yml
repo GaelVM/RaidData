@@ -45,10 +45,7 @@ jobs:
         
         - name: Move JSON File to Working Directory
           run: mv temp/noticias.json ./
-        
-        - name: Move JSON File to Working Directory
-          run: mv temp/shinyrates.json ./
-    
+         
         - name: Modify JSON File
           run: echo  >> bossraid.json
                echo  >> eggs.json
