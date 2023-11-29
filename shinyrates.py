@@ -1,7 +1,7 @@
 import os
 import requests
 import json
-from pathlib import Path  # Importa la clase Path desde pathlib
+from pathlib import Path  # Importa la clase Path desde la biblioteca pathlib
 
 # Define la carpeta temporal
 temp_folder = "temp"
@@ -17,7 +17,6 @@ url_pokedex = "https://raw.githubusercontent.com/GaelVM/Datos/main/pokedex2023.j
 response_shinyrates = requests.get(url_shinyrates)
 response_pokedex = requests.get(url_pokedex)
 
-# Asegúrate de manejar posibles errores HTTP
 response_shinyrates.raise_for_status()
 response_pokedex.raise_for_status()
 
@@ -66,3 +65,5 @@ if response_shinyrates.status_code == 200 and response_pokedex.status_code == 20
         json.dump(sorted_data, json_file, ensure_ascii=False, indent=2)
 
     print(f"Datos guardados en {json_file_path}")
+else:
+    print("Error al obtener datos de una o ambas URLs.")
