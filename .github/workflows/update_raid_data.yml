@@ -33,9 +33,6 @@ jobs:
         
         - name: Run Python Script
           run: python noticias.py
-        
-        - name: Run Python Script
-          run: python shinyrates.py
     
         - name: Move JSON File to Working Directory
           run: mv temp/bossraid.json ./
