@@ -44,10 +44,11 @@ jobs:
           run: mv temp/noticias.json ./
          
         - name: Modify JSON File
-          run: echo  >> bossraid.json
-               echo  >> eggs.json
-               echo  >> noticias.json
-    
+          run: |
+              echo "" >> bossraid.json
+              echo "" >> eggs.json
+              echo "" >> noticias.json
+        
         - name: Commit JSON Changes
           run: |
             git config --local user.email "github-actions[bot]@users.noreply.github.com"
