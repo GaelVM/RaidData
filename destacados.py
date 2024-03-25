@@ -28,8 +28,11 @@ for event in filtered_events:
         translated_bonus = bonus_translations.get(bonus)
         event["extraData"]["spotlight"]["bonusimg"] = bonus
         event["extraData"]["spotlight"]["bonus"] = translated_bonus if translated_bonus else bonus
+    
     new_event = {
         "name": f"Hora destacada de: {event['extraData']['spotlight']['name']}",
+        "start": event["start"],  # Extraer start del JSON original
+        "end": event["end"],      # Extraer end del JSON original
         "extraData": event["extraData"]["spotlight"]
     }
     new_json.append(new_event)
