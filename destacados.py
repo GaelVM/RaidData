@@ -33,7 +33,7 @@ for event in filtered_events:
     pokemon_names = ', '.join(pokemon['name'] for pokemon in event["extraData"]["spotlight"]["list"])
 
     new_event = {
-        "name": f"Hora destacada de: {pokemon_names}",
+        "name": f"{pokemon_names}",
         "start": event["start"],  # Extraer start del JSON original
         "end": event["end"],      # Extraer end del JSON original
         "extraData": event["extraData"]["spotlight"]
