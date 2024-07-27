@@ -80,7 +80,7 @@ jobs:
             git add noticias.json
             git add rankshiny.json
             git add destacados.json
-            git add legendarios.json
+            git add raid_hour.json
             git commit -m "Datos actualizados 🤖🍺"
     
         - name: Remove Temp Folder
