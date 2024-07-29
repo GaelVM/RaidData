@@ -42,6 +42,9 @@ jobs:
 
         - name: Run Python Script
           run: python legendarios.py
+
+        - name: Run Python Script
+          run: python shinys.py
     
         - name: Move JSON File to Working Directory
           run: mv temp/bossraid.json ./
@@ -60,6 +63,9 @@ jobs:
 
         - name: Move JSON File to Working Directory
           run: mv temp/raid_hour.json ./
+
+        - name: Move JSON File to Working Directory
+          run: mv temp/shinys.json ./
          
         - name: Modify JSON File
           run: |
@@ -69,6 +75,7 @@ jobs:
               echo "" >> rankshiny.json
               echo "" >> destacados.json
               echo "" >> raid_hour.json
+              echo "" >> shinys.json
         
         - name: Commit JSON Changes
           run: |
@@ -81,6 +88,7 @@ jobs:
             git add rankshiny.json
             git add destacados.json
             git add raid_hour.json
+            git add shinys.json
             git commit -m "Datos actualizados 🤖🍺"
     
         - name: Remove Temp Folder
