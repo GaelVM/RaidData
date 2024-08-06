@@ -25,9 +25,9 @@ def get_absolute_path(relative_path):
 def download_pokemon_image_url(pokemon_number):
     """Obtener la URL de la imagen del Pokémon con el número de la Pokédex proporcionado."""
     # Eliminar ceros a la izquierda y el símbolo #
-    cleaned_number = pokemon_number.lstrip('0#')
+    cleaned_number = pokemon_number.lstrip('#')
     
-    image_url = f"https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon/Addressable%20Assets/pm{cleaned_number}.icon.png"
+    image_url = f"https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon%20-%20256x256/pokemon_icon_{cleaned_number}_00.png"
     return image_url
 
 # Definir la URL de la página web
