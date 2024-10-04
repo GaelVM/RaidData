@@ -23,22 +23,31 @@ filtered_events = [event for event in original_json if event.get("eventType") ==
 # Crear un nuevo JSON con los datos filtrados y traducidos
 new_json = []
 for event in filtered_events:
-    bonus = event["extraData"]["spotlight"].get("bonus")
-    if bonus:
-        translated_bonus = bonus_translations.get(bonus)
-        event["extraData"]["spotlight"]["bonusimg"] = bonus
-        event["extraData"]["spotlight"]["bonus"] = translated_bonus if translated_bonus else bonus
+    # Verificar si "extraData" existe y no es None
+    extra_data = event.get("extraData")
     
-    # Obtener el nombre de todos los Pokémon en el foco
-    pokemon_names = ', '.join(pokemon['name'] for pokemon in event["extraData"]["spotlight"]["list"])
+    if extra_data is not None:  # Solo proceder si "extraData" no es None
+        spotlight_data = extra_data.get("spotlight")  # Obtener "spotlight" de "extraData"
+        
+        if spotlight_data:  # Si existe "spotlight", proceder
+            bonus = spotlight_data.get("bonus")  # Obtener el bonus
+            if bonus:
+                # Traducir el bonus si existe en el diccionario
+                translated_bonus = bonus_translations.get(bonus, bonus)  # Usa el bonus original si no hay traducción
+                spotlight_data["bonusimg"] = bonus  # Guardar el bonus original en "bonusimg"
+                spotlight_data["bonus"] = translated_bonus  # Guardar la traducción o el bonus original
 
-    new_event = {
-        "name": f"{pokemon_names}",
-        "start": event["start"],  # Extraer start del JSON original
-        "end": event["end"],      # Extraer end del JSON original
-        "extraData": event["extraData"]["spotlight"]
-    }
-    new_json.append(new_event)
+            # Obtener los nombres de los Pokémon de la lista
+            pokemon_names = ', '.join(pokemon['name'] for pokemon in spotlight_data.get("list", []))
+
+            # Crear el nuevo evento con los campos requeridos
+            new_event = {
+                "name": pokemon_names,
+                "start": event.get("start"),  # Extraer start del JSON original
+                "end": event.get("end"),      # Extraer end del JSON original
+                "extraData": spotlight_data   # Mantener el spotlight modificado
+            }
+            new_json.append(new_event)
 
 # Define la carpeta temporal
 temp_folder = "temp"
