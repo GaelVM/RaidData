@@ -1,0 +1,69 @@
+[
+    {
+        "name": "Luvdisc",
+        "start": "2025-02-11T18:00:00.000",
+        "end": "2025-02-11T19:00:00.000",
+        "extraData": {
+            "name": "Luvdisc",
+            "canBeShiny": true,
+            "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_370_00.png",
+            "bonus": "Doble de polvo estelar por captura",
+            "list": [
+                {
+                    "name": "Luvdisc",
+                    "canBeShiny": true,
+                    "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_370_00.png"
+                }
+            ],
+            "bonusimg": "2× Catch Stardust"
+        }
+    },
+    {
+        "name": "Inkay",
+        "start": "2025-02-18T18:00:00.000",
+        "end": "2025-02-18T19:00:00.000",
+        "extraData": {
+            "name": "Inkay",
+            "canBeShiny": true,
+            "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_686_00.png",
+            "bonus": "Doble de experiencia por captura",
+            "list": [
+                {
+                    "name": "Inkay",
+                    "canBeShiny": true,
+                    "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_686_00.png"
+                }
+            ],
+            "bonusimg": "2× Catch XP"
+        }
+    },
+    {
+        "name": "Snivy, Tepig, Oshawott",
+        "start": "2025-02-25T18:00:00.000",
+        "end": "2025-02-25T19:00:00.000",
+        "extraData": {
+            "name": "Snivy",
+            "canBeShiny": true,
+            "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_495_00.png",
+            "bonus": "Doble de caramelos por captura",
+            "list": [
+                {
+                    "name": "Snivy",
+                    "canBeShiny": true,
+                    "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_495_00.png"
+                },
+                {
+                    "name": "Tepig",
+                    "canBeShiny": true,
+                    "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_498_00.png"
+                },
+                {
+                    "name": "Oshawott",
+                    "canBeShiny": true,
+                    "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_501_00.png"
+                }
+            ],
+            "bonusimg": "2× Catch Candy"
+        }
+    }
+]
